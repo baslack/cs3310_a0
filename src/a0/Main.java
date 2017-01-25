@@ -1,20 +1,35 @@
-/**
- * 
- */
+/*
+Benjamin Slack
+CS3310, Winter 2017
+Assignment #1
+Searching in Arrays
+ 
+Summary:
+Experiment with techniques for searching 
+sorted arrays. Practice developing high-
+performance solutions. Compare theoreti-
+cal vs. empirical complexities. Compare
+iterative and recursive solutions of the
+problem.
+*/
+
 package a0;
 
-/**
- * @author nimajneb
- *
- */
 public class Main {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("Hello World.\n");
+		/*
+		 TODO:
+		 done 1. Generate n random floats, 1 to m
+		 done 2. Sort n.
+		 3. Generate a random number x.
+		 3a. BinSearch Array interatively
+		 3b. BinSearch Array recursively
+		 4. Redo 3, poking at thirds
+		 5. Redo 3, poking at quarters
+		 6. Range-Query: gen two (x,y) rand
+		    Find no of n between (x,y)
+		 */
 
 	}
 
