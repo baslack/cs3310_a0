@@ -30,6 +30,14 @@ public class Main {
 		 6. Range-Query: gen two (x,y) rand
 		    Find no of n between (x,y)
 		 */
+		RandomArray test = new RandomArray();
+		test.__testArray();
+		System.out.printf("%d\n", test.binarySearch_iter(3.0f));
+		System.out.printf("%d\n", test.binarySearch_recu(7.0f));
+		System.out.printf("%d\n", test.rangeQuery(7.5f, 7.9f));
+		System.out.printf("%d\n", test.rangeQuery(3.1f, 7.9f));
+		System.out.printf("%d\n", test.rangeQuery(7.0f, 7.0f));
+		test.dump();
 
 	}
 
