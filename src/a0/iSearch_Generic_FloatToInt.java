@@ -6,6 +6,6 @@ package a0;
  *
  */
 
-public interface iSearch_Generic {
+public interface iSearch_Generic_FloatToInt {
 	public abstract int f(float x);
 }
