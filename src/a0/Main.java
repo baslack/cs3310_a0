@@ -38,7 +38,8 @@ public class Main {
 		System.out.printf("%d\n", test.rangeQuery(3.1f, 7.9f));
 		System.out.printf("%d\n", test.rangeQuery(7.0f, 7.0f));
 		test.dump();
-
+		
+		SearchTimer timer = new SearchTimer(1, 5.0f, (x)->test.binarySearch_iter(x));
 	}
 
 }
