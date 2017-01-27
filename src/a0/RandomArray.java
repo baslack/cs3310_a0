@@ -3,7 +3,13 @@ package a0;
 import java.util.Arrays;
 import java.util.Random;
 
-public class RandomArray {
+/**
+ * Random array implements the iSearch interface using a
+ * array data structure to hold an number of random floats.
+ * @author Benjamin Slack
+ *
+ */
+public class RandomArray implements iSearch{
 	private int size;
 	private float max;
 	private float[] ar;
@@ -19,10 +25,13 @@ public class RandomArray {
 	
 	public RandomArray(int size, float max) {
 
-		this.size = size;
-		this.max = max;
-		this.initArray();
-	
+		if ((size >= 1)&&(max >= 1.0f)){
+			this.size = size;
+			this.max = max;
+			this.initArray();
+		}else{
+			throw(new IllegalArgumentException("RandomArray: bad creation parameters"));
+		}
 	}
 	
 	/**
@@ -131,8 +140,8 @@ public class RandomArray {
 		int end = this.ar.length - 1;
 		int partition1, partition2;
 		while (start<=end){
-			partition1 = (start + end)/3;
-			partition2 = (start + end)/3*2;
+			partition1 = (end - start)/3 + start;
+			partition2 = (end - start)/3*2 + start;
 			if (this.ar[partition1] == x){ // x is the first partition point
 				return partition1;
 			}else if (this.ar[partition2] == x){ // x is the second partition point
@@ -168,8 +177,8 @@ public class RandomArray {
 			return -1;
 		}
 		int partition1, partition2;
-		partition1 = (start + end)/3;
-		partition2 = (start + end)/3*2;
+		partition1 = (end - start)/3 + start;
+		partition2 = (end - start)/3*2 + start;
 		if (this.ar[partition1] == x){ // x is partition point 1
 			return partition1;
 		}else if (this.ar[partition2] == x){ // x is partition point 2
@@ -197,9 +206,9 @@ public class RandomArray {
 		int end = this.ar.length - 1;
 		int partition1, partition2, partition3;
 		while(start<=end){
-			partition1 = (start + end)/4; // calculate the partitions
-			partition2 = (start + end)/4*2;
-			partition3 = (start + end)/4*3;
+			partition1 = (end - start)/4 + start; // calculate the partitions
+			partition2 = (end - start)/4*2 + start;
+			partition3 = (end - start)/4*3 + start;
 			if (this.ar[partition1] == x){ // if we happen to hit, return the hit
 				return partition1;
 			}else if (this.ar[partition2] == x){
@@ -239,9 +248,9 @@ public class RandomArray {
 			return -1;
 		}
 		int partition1, partition2, partition3;
-		partition1 = (start + end)/4;
-		partition2 = (start + end)/4*2;
-		partition3 = (start + end)/4*3;
+		partition1 = (end - start)/4 + start; // calculate the partitions
+		partition2 = (end - start)/4*2 + start;
+		partition3 = (end - start)/4*3 + start;
 		if (this.ar[partition1] == x){
 			return partition1;
 		}else if (this.ar[partition2] == x){
@@ -289,7 +298,24 @@ public class RandomArray {
 	 * @return index of the ceiling value in the array
 	 */
 	private int findCeiling(float x){
-		return (findFloor(x) + 1);
+		int start = 0;
+		int end = this.ar.length - 1;
+		int ceiling = (start + end)/2;
+		while(start <= end){
+			if (this.ar[ceiling] < x){ // floor maybe not high enough
+				start = ceiling + 1;
+			}else if(this.ar[ceiling] > x){ // floor is too high
+				end = ceiling - 1;
+			}else{
+				return ceiling; // the value is the floor
+			}
+			ceiling = (start + end)/2;
+		}
+		if (this.ar[ceiling] == x){
+			return ceiling; // x is the ceiling value
+		}else{
+			return ceiling + 1;	// x is below the ceiling value
+		}
 	}
 	
 	/**
